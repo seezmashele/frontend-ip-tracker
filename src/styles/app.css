@@ -3,8 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .responsive_text_center {
+    @apply text-center md:text-left;
+  }
+}
+
+.clap_lines {
+  max-height: 4rem;
+}
+
 .header_bg {
-  background-image: url("/public/pattern-bg-desktop.png");
+  background-image: url("/pattern-bg-desktop.png");
   background-position: top;
 }
 
