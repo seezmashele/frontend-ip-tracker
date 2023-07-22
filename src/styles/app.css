@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header_bg {
+  background-image: url("/public/pattern-bg-desktop.png");
+  background-position: top;
+}
+
+.rubik_font {
+  font-family: "Rubik", sans-serif;
+}
+
+.dark_gray {
+  color: hsl(0, 0%, 59%);
+}
+
+.very_dark_gray {
+  color: hsl(0, 0%, 17%);
+}
