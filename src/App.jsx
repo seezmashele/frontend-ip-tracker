@@ -78,7 +78,7 @@ function App() {
 
   return (
     <>
-      <div className="header_bg bg-neutral-200 z-0 w-full h-[17.5rem] flex flex-col px-8 rubik_font">
+      <div className="header_bg bg-neutral-200 z-0 w-full h-[24.5rem] md:h-[17.5rem] flex flex-col px-8 rubik_font">
         <h3 className="text-white text-3xl pt-7 font-semiboldf font-[500] text-center">
           IP Address Tracker
         </h3>
@@ -116,46 +116,46 @@ function App() {
             />
           </button>
         </div>
-      </div>
 
-      <div className="w-full rubik_font z-40 relative h-0 px-8">
-        <div className="w-full p-8 bg-white shadow-2xl rounded-2xl h-40f -mt-[5rem] mx-auto max-w-5xl flex-col flex md:flex-row">
-          <div className="w-full md:w-1/4 md:pr-5 overflow-hidden whitespace-normal text-ellipsis responsive_text_center">
-            <h4 className="dark_gray uppercase overflow-hidden tracking-widest font-bold text-[12px] ">
-              Ip address
-            </h4>
-            <p className="font-[500] text-2xl mt-2 overflow-hidden text-ellipsis very_dark_gray clap_lines">
-              {responseIp}
-            </p>
-          </div>
-          <div className="w-full mt-6 md:mt-0 md:w-1/4 md:border-l md:pl-8 md:pr-5 responsive_text_center">
-            <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
-              Location
-            </h4>
-            <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clap_lines">
-              {areaInfo}
-            </p>
-          </div>
-          <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 md:pr-5 responsive_text_center">
-            <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
-              Timezone
-            </h4>
-            <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clap_lines">
-              {timezone && "UTC " + timezone}
-            </p>
-          </div>
-          <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 responsive_text_center">
-            <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
-              Isp
-            </h4>
-            <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clap_lines">
-              {isp}
-            </p>
+        <div className="w-full rubik_font z-40 relative h-0 mt-12">
+          <div className="w-full p-8 bg-white shadow-2xl rounded-2xl mx-auto max-w-5xl flex-col flex md:flex-row">
+            <div className="w-full md:w-1/4 md:pr-5 overflow-hidden whitespace-normal text-ellipsis responsive_text_center">
+              <h4 className="dark_gray uppercase overflow-hidden tracking-widest font-bold text-[12px] ">
+                Ip address
+              </h4>
+              <p className="font-[500] text-2xl mt-2 overflow-hidden text-ellipsis very_dark_gray clamp_lines">
+                {responseIp}
+              </p>
+            </div>
+            <div className="w-full mt-6 md:mt-0 md:w-1/4 md:border-l md:pl-8 md:pr-5 responsive_text_center">
+              <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
+                Location
+              </h4>
+              <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clamp_lines">
+                {areaInfo}
+              </p>
+            </div>
+            <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 md:pr-5 responsive_text_center">
+              <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
+                Timezone
+              </h4>
+              <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clamp_lines">
+                {timezone && "UTC " + timezone}
+              </p>
+            </div>
+            <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 responsive_text_center">
+              <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
+                Isp
+              </h4>
+              <p className="font-[500] text-2xl mt-2 very_dark_gray overflow-hidden text-ellipsis clamp_lines">
+                {isp}
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="w-full h-[100vh] -mt-[5rem]f relative z-10 mt-[5rem] bg-[#ddd]">
+      <div className="w-full h-[100vh] relative z-10 bg-[#ddd]">
         {mapPosition && (
           <MapContainer
             key={"mapkey" + responseIp}

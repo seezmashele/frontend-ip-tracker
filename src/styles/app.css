@@ -7,20 +7,27 @@
   .responsive_text_center {
     @apply text-center md:text-left;
   }
+
+  .clamp_lines {
+    @apply md:min-h-[4rem] min-h-[2rem];
+  }
 }
 
-.clap_lines {
-  height: 4rem;
+.clamp_lines {
+  max-height: 4rem;
 }
 
 .header_bg {
-  background-image: url("/pattern-bg-desktop.png");
-  background-position: top;
-}
-
-.header_bg--mobile {
   background-image: url("/pattern-bg-mobile.png");
   background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .header_bg {
+    background-image: url("/pattern-bg-desktop.png");
+  }
 }
 
 .rubik_font {
