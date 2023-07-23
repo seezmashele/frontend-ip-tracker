@@ -7,13 +7,12 @@ import L from "leaflet"
 
 function App() {
   const [isp, setIsp] = useState("")
-  const [userIp, setUserIp] = useState("")
   const [responseIp, setResponseIp] = useState("")
   const [areaInfo, setAreaInfo] = useState("")
   const [timezone, setTimezone] = useState("")
   const [searchText, setSearchText] = useState("")
   const [mapPosition, setMapPosition] = useState(null)
-  const myApiKey = "at_vWBG1GQaJ8cF7Bfw5I8FSDdnS2Klm"
+  const myApiKey = "at_QizXblfiByoPnOJtM7rCP1W0FYqoH"
 
   let myMarker = L.icon({
     iconUrl: customMarker,
@@ -38,15 +37,9 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("https://api.ipify.org?format=json")
-      .then(response => response.json())
-      .then(data => setUserIp(data.ip))
-  })
-
-  useEffect(() => {
-    if (userIp) {
+    const getInitialData = address => {
       fetch(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=${myApiKey}&ipAddress=${userIp}`
+        `https://geo.ipify.org/api/v2/country,city?apiKey=${myApiKey}&ipAddress=${address}`
       )
         .then(response => response.json())
         .then(data => updateAllDetails(data))
@@ -54,7 +47,13 @@ function App() {
           console.log(err)
         })
     }
-  }, [userIp])
+
+    fetch("https://api.ipify.org?format=json")
+      .then(response => response.json())
+      .then(data => {
+        getInitialData(data.ip)
+      })
+  }, [])
 
   const checkValidIp = str => {
     const regExp =
@@ -96,7 +95,6 @@ function App() {
                 type="text"
                 value={searchText}
                 onChange={e => {
-                  console.log(e.target.value)
                   setSearchText(e.target.value)
                 }}
                 className="p-4 rounded-l-2xl w-full whitespace-nowrap text-[18px] overflow-hidden text-ellipsis"
