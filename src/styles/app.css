@@ -10,11 +10,16 @@
 }
 
 .clap_lines {
-  max-height: 4rem;
+  height: 4rem;
 }
 
 .header_bg {
   background-image: url("/pattern-bg-desktop.png");
+  background-position: top;
+}
+
+.header_bg--mobile {
+  background-image: url("/pattern-bg-mobile.png");
   background-position: top;
 }
 
