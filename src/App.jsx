@@ -55,6 +55,7 @@ function App() {
   }
 
   const handleAddressSearch = () => {
+    console.log("search ", searchText)
     if (searchText) {
       const requestString = checkValidIp(searchText)
         ? `https://geo.ipify.org/api/v2/country,city?apiKey=${myApiKey}&ipAddress=${searchText}`
@@ -75,16 +76,25 @@ function App() {
         </h3>
         <div className="flex w-full max-w-lg mx-auto mt-7 rounded-2xl shadow-lg">
           <div className="w-full bg-white h-14f rounded-l-2xl overflow-hidden">
-            <input
-              type="text"
-              value={searchText}
-              onChange={e => {
-                console.log(e.target.value)
-                setSearchText(e.target.value)
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                handleAddressSearch()
               }}
-              className="p-4 rounded-l-2xl w-full whitespace-nowrap text-[18px] overflow-hidden text-ellipsis"
-              placeholder="Search for any IP address or domain"
-            />
+              action=""
+              className="w-full"
+            >
+              <input
+                type="text"
+                value={searchText}
+                onChange={e => {
+                  console.log(e.target.value)
+                  setSearchText(e.target.value)
+                }}
+                className="p-4 rounded-l-2xl w-full whitespace-nowrap text-[18px] overflow-hidden text-ellipsis"
+                placeholder="Search for any IP address or domain"
+              />
+            </form>
           </div>
           <button
             type="button"
@@ -140,9 +150,10 @@ function App() {
       <div className="w-full h-[100vh] -mt-[5rem]f relative z-10 mt-[5rem] bg-[#ddd]">
         {mapPosition && (
           <MapContainer
+            key={"mapkey" + responseIp}
             className="w-full h-full"
             center={mapPosition}
-            zoom={14}
+            zoom={13}
             scrollWheelZoom={false}
           >
             <TileLayer
