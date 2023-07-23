@@ -1,7 +1,9 @@
 import "leaflet/dist/leaflet.css"
 import rightArrow from "/icon-arrow.svg"
+import customMarker from "/icon-location.svg"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { useEffect, useState } from "react"
+import L from "leaflet"
 
 function App() {
   const [isp, setIsp] = useState("")
@@ -13,10 +15,17 @@ function App() {
   const [mapPosition, setMapPosition] = useState(null)
   const myApiKey = "at_vWBG1GQaJ8cF7Bfw5I8FSDdnS2Klm"
 
+  let myMarker = L.icon({
+    iconUrl: customMarker,
+    iconRetinaUrl: customMarker,
+    iconAnchor: [22, 55],
+    popupAnchor: [0, -55],
+    iconSize: [44, 55]
+  })
+
   const updateAllDetails = data => {
     if (data && data.location) {
       const loc = data.location
-      console.log("data - ", data)
 
       setIsp(data.isp)
       setResponseIp(data.ip)
@@ -55,7 +64,6 @@ function App() {
   }
 
   const handleAddressSearch = () => {
-    console.log("search ", searchText)
     if (searchText) {
       const requestString = checkValidIp(searchText)
         ? `https://geo.ipify.org/api/v2/country,city?apiKey=${myApiKey}&ipAddress=${searchText}`
@@ -120,7 +128,7 @@ function App() {
               {responseIp}
             </p>
           </div>
-          <div className="w-full mt-7 md:mt-0 md:w-1/4 md:border-l md:pl-8 md:pr-5 responsive_text_center">
+          <div className="w-full mt-6 md:mt-0 md:w-1/4 md:border-l md:pl-8 md:pr-5 responsive_text_center">
             <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
               Location
             </h4>
@@ -128,7 +136,7 @@ function App() {
               {areaInfo}
             </p>
           </div>
-          <div className="w-full md:w-1/4 mt-7 md:mt-0 md:border-l md:pl-8 md:pr-5 responsive_text_center">
+          <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 md:pr-5 responsive_text_center">
             <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
               Timezone
             </h4>
@@ -136,7 +144,7 @@ function App() {
               {timezone && "UTC " + timezone}
             </p>
           </div>
-          <div className="w-full md:w-1/4 mt-7 md:mt-0 md:border-l md:pl-8 responsive_text_center">
+          <div className="w-full md:w-1/4 mt-6 md:mt-0 md:border-l md:pl-8 responsive_text_center">
             <h4 className="dark_gray uppercase tracking-widest font-bold text-[12px]">
               Isp
             </h4>
@@ -160,10 +168,8 @@ function App() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={mapPosition}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
+            <Marker position={mapPosition} icon={myMarker}>
+              <Popup>Hello World 😃</Popup>
             </Marker>
           </MapContainer>
         )}
