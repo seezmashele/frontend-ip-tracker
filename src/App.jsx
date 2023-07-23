@@ -77,7 +77,7 @@ function App() {
 
   return (
     <>
-      <div className="header_bg bg-neutral-200 z-0 w-full h-[24.5rem] md:h-[17.5rem] flex flex-col px-8 rubik_font">
+      <div className="header_bg z-0 w-full h-[24.5rem] md:h-[17.5rem] flex flex-col px-8 rubik_font">
         <h3 className="text-white text-3xl pt-7 font-semiboldf font-[500] text-center">
           IP Address Tracker
         </h3>
@@ -153,7 +153,7 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full h-[100vh] relative z-10 bg-[#ddd]">
+      <div className="w-full h-[100vh] relative z-10">
         {mapPosition && (
           <MapContainer
             key={"mapkey" + responseIp}

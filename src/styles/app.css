@@ -13,6 +13,10 @@
   }
 }
 
+:root {
+  background: #ddd;
+}
+
 .clamp_lines {
   max-height: 4rem;
 }
